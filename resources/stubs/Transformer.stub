@@ -1,0 +1,18 @@
+<?php
+namespace App\Transformers;
+
+use App\Models\{{modelName}};
+use League\Fractal\TransformerAbstract;
+
+class {{modelName}}Transformer extends TransformerAbstract
+{
+
+    public function transform({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        return [
+            'id' => ${{modelNameSingularLowerCase}}->id,{{fieldList}}
+            'can_edit' => ${{modelNameSingularLowerCase}}->can_edit,
+            'can_delete' => ${{modelNameSingularLowerCase}}->can_delete,
+        ];
+    }
+}

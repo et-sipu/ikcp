@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
+use OwenIt\Auditing\Contracts\Auditable;
+
+class {{modelName}} extends Model implements Auditable
+{
+    use \OwenIt\Auditing\Auditable;
+
+    protected $fillable = [{{fieldList}}
+    ];
+
+    // protected $appends = ['can_edit', 'can_delete'];
+
+    // Properties
+    public function getCanEditAttribute()
+    {
+        return true;//Gate::check('edit {{modelNamePluralLowerCaseWithSpaces}}');
+    }
+
+    public function getCanDeleteAttribute()
+    {
+        return true;//Gate::check('delete {{modelNamePluralLowerCaseWithSpaces}}');
+    }
+
+    // Relations
+{{relations}}
+    // Scopes
+
+    // Methods
+}

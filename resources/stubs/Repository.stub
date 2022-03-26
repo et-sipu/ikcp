@@ -1,0 +1,107 @@
+<?php
+
+namespace App\Repositories;
+
+use Exception;
+use App\Models\{{modelName}};
+use App\Exceptions\GeneralException;
+use App\Repositories\Contracts\{{modelName}}Repository;
+use Illuminate\Support\Facades\DB;
+
+/**
+ * Class Eloquent{{modelName}}Repository.
+ */
+class Eloquent{{modelName}}Repository extends EloquentBaseRepository implements {{modelName}}Repository
+{
+    /**
+     * Eloquent{{modelName}}Repository constructor.
+     *
+     * @param {{modelName}} ${{modelNameSingularLowerCase}}
+     */
+    public function __construct({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        parent::__construct(${{modelNameSingularLowerCase}});
+    }
+
+    /**
+     * @param $name
+     *
+     * @return {{modelName}}
+     */
+    public function find($name)
+    {
+        /* @var {{modelName}} ${{modelNameSingularLowerCase}} */
+        return false;//$this->query()->whereName($name)->first();
+    }
+
+    /**
+     * @param array $input
+     *
+     * @throws \Exception|\Throwable
+     *
+     * @return \App\Models\{{modelName}}
+     */
+    public function store(array $input)
+    {
+        {{relations}}/** @var {{modelName}} ${{modelNameSingularLowerCase}} */
+        ${{modelNameSingularLowerCase}} = $this->make(array_except($input, []));
+
+        if ($this->find(${{modelNameSingularLowerCase}}->name)) {
+            throw new GeneralException(__('exceptions.backend.{{modelNamePluralLowerCase}}.already_exist'));
+        }
+
+        DB::transaction(function () use ( ${{modelNameSingularLowerCase}}, $input) {
+            if (!${{modelNameSingularLowerCase}}->save()) {
+                throw new GeneralException(__('exceptions.backend.{{modelNamePluralLowerCase}}.create'));
+            }
+
+            return true;
+        });
+
+        return ${{modelNameSingularLowerCase}};
+    }
+
+    /**
+     * @param {{modelName}} ${{modelNameSingularLowerCase}}
+     * @param array       $input
+     *
+     * @throws Exception
+     * @throws \Exception|\Throwable
+     *
+     * @return \App\Models\{{modelName}}
+     */
+    public function update({{modelName}} ${{modelNameSingularLowerCase}}, array $input)
+    {
+        if (($existing{{modelName}} = $this->find(${{modelNameSingularLowerCase}}->name))
+          && $existing{{modelName}}->id !== ${{modelNameSingularLowerCase}}->id
+        ) {
+            throw new GeneralException(__('exceptions.backend.{{modelNamePluralLowerCase}}.already_exist'));
+        }
+        {{relations}}
+        DB::transaction(function () use ( ${{modelNameSingularLowerCase}}, $input) {
+            if (!${{modelNameSingularLowerCase}}->update(array_except($input, []))) {
+                throw new GeneralException(__('exceptions.backend.{{modelNamePluralLowerCase}}.update'));
+            }
+
+            return true;
+        });
+
+        return ${{modelNameSingularLowerCase}};
+    }
+
+    /**
+     * @param {{modelName}} ${{modelNameSingularLowerCase}}
+     *
+     * @throws \Exception|\Throwable
+     *
+     * @return bool|null
+     */
+    public function destroy({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        if (! ${{modelNameSingularLowerCase}}->delete()) {
+            throw new GeneralException(__('exceptions.backend.{{modelNamePluralLowerCase}}.delete'));
+        }
+
+        return true;
+    }
+}

@@ -1,0 +1,63 @@
+<template>
+  <div class="animated fadeIn">
+    <form @submit.prevent="onSubmit">
+      <b-row class="justify-content-center">
+        <b-col xl="6">
+          <b-card>
+            <h4 slot="header">{{ isNew ? $t('labels.backend.{{modelNamePluralLowerCase}}.titles.create') : $t('labels.backend.{{modelNamePluralLowerCase}}.titles.edit') }}</h4>
+
+            <b-row class="justify-content-center">
+              <b-col xl="12">
+{{fieldList}}              </b-col>
+            </b-row>
+
+            <b-row slot="footer">
+              <b-col md>
+                <b-button :to="{ name: '{{modelNamePluralLowerCase}}' }" variant="danger" size="sm">
+                  {{ $t('buttons.back') }}
+                </b-button>
+              </b-col>
+              <b-col md>
+                <b-button type="submit" variant="success" size="sm" class="float-right"
+                          :disabled="pending"
+                          v-if="(isNew && this.$app.user.can('create {{modelNamePluralLowerCaseWithSpaces}}')) || this.$app.user.can('edit {{modelNamePluralLowerCaseWithSpaces}}')"
+                >
+                  {{ isNew ? $t('buttons.create') : $t('buttons.edit') }}
+                </b-button>
+              </b-col>
+            </b-row>
+          </b-card>
+        </b-col>
+      </b-row>
+    </form>
+  </div>
+</template>
+
+<script>
+import form from '../mixins/form'
+{{axiosImport}}
+
+export default {
+  name: '{{modelName}}Form',
+  components: {{{Multiselect}}},
+  mixins: [form],
+  data() {
+    return {{{config}}
+      modelName: '{{modelNameSingularLowerCase}}',
+      resourceRoute: '{{modelNamePluralLowerCase}}',
+      listPath: '/{{modelNamePluralLowerCase}}',{{relationsOptions}}
+      model: {{{modelFieldList}}
+      }
+    }
+  }
+  computed: {
+    listPath() {
+      let route = this.$router.resolve({
+        name: this.modelName
+      })
+
+      return route.href
+    }
+  }{{createdHook}}
+}
+</script>

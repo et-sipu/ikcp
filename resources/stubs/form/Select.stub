@@ -1,0 +1,22 @@
+                <b-form-group
+                  :label="$t('validation.attributes.{{fieldName}}')"
+                  label-for="{{fieldName}}"
+                  :label-cols="3"
+                  :invalid-feedback="feedback('{{fieldName}}')"
+                  :state="state('{{fieldName}}')"
+                >
+                  <multiselect
+                    id="{{fieldName}}"
+                    name="{{fieldName}}"
+                    track-by="id"
+                    label="name"
+                    :searchable="true"
+                    v-model="model.{{fieldName}}"
+                    :options="{{modelNamePluralLowerCase}}"
+                    :close-on-select="true"
+                    :show-labels="false"
+                    :placeholder="
+                      '-- ' + $t('validation.attributes.{{fieldName}}') + ' --'
+                    "
+                  ></multiselect>
+                </b-form-group>

@@ -1,0 +1,124 @@
+@page {
+    margin-right: 0.7in;
+    margin-left: 0.7in;
+    margin-top: 0.4in;
+    margin-bottom: 0.14in
+}
+body {
+    width: 100%;
+}
+.header_copies {
+    font-family: Arial Narrow, Arial, sans-serif;
+    font-size: 8px;
+}
+.header_title {
+    font-family: Arial Narrow, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+.contract_label {
+    font-family: Calibri, sans-serif;
+    font-size: 8px;
+}
+.contract_label_bold {
+    font-family: Calibri, sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+}
+.contract_value {
+    font-family: "Times New Roman", serif;
+    font-size: 10px;
+    font-weight: bold;
+}
+.contract_terms {
+    font-family: Calibri, sans-serif;
+    font-size: 8px;
+    text-align: justify;
+    margin-top: 0in;
+    margin-bottom: 0in;
+    line-height: 80%;
+}
+.table_label {
+    margin-bottom: 0in;
+    line-height: 100%;
+    font-family: Calibri, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+}
+li {
+    font-size: 12px;
+    font-weight: bold;
+}
+td{
+    padding: -0.18in 0.08in -0.03in;
+    line-height: 90%
+}
+.td_normal {
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-bottom: none;
+    border-right: none;
+}
+.td_last_cell_in_row {
+    border-right: 1px solid #000000;
+}
+.td_last_cell_in_col {
+    border-bottom: 1px solid #000000;
+}
+header { position: fixed; top: -10px; left: 0px; right: 0px;}
+footer { position: fixed; bottom: 0px; left: 0px; right: 0px; height: 20px;font-size: 10px; }
+
+/*added by Homam for SEA table*/
+ol {
+    margin-bottom: 0in;
+}
+
+ul {
+    margin-bottom: 0in;
+}
+
+table.MsoNormalTable
+{mso-style-name:"Table Normal";
+    mso-tstyle-rowband-size:0;
+    mso-tstyle-colband-size:0;
+    mso-style-noshow:yes;
+    mso-style-priority:99;
+    mso-style-parent:"";
+    mso-padding-alt:0in 5.4pt 0in 5.4pt;
+    mso-para-margin-top:0in;
+    mso-para-margin-right:0in;
+    mso-para-margin-bottom:8.0pt;
+    mso-para-margin-left:0in;
+    line-height:107%;
+    mso-pagination:widow-orphan;
+    font-size:11.0pt;
+    font-family:"Calibri",sans-serif;
+    mso-ascii-font-family:Calibri;
+    mso-ascii-theme-font:minor-latin;
+    mso-hansi-font-family:Calibri;
+    mso-hansi-theme-font:minor-latin;
+    mso-bidi-font-family:Arial;
+    mso-bidi-theme-font:minor-bidi;}
+
+table.MsoTableGrid
+    {mso-style-name:"Table Grid";
+    mso-tstyle-rowband-size:0;
+    mso-tstyle-colband-size:0;
+    mso-style-priority:39;
+    mso-style-unhide:no;
+    border:solid windowtext 1.0pt;
+    mso-border-alt:solid windowtext .5pt;
+    mso-padding-alt:0in 5.4pt 0in 5.4pt;
+    mso-border-insideh:.5pt solid windowtext;
+    mso-border-insidev:.5pt solid windowtext;
+    mso-para-margin:0in;
+    mso-para-margin-bottom:.0001pt;
+    mso-pagination:widow-orphan;
+    font-size:11.0pt;
+    font-family:"Calibri",sans-serif;
+    mso-ascii-font-family:Calibri;
+    mso-ascii-theme-font:minor-latin;
+    mso-hansi-font-family:Calibri;
+    mso-hansi-theme-font:minor-latin;
+    mso-bidi-font-family:Arial;
+    mso-bidi-theme-font:minor-bidi;}

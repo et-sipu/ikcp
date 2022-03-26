@@ -1,0 +1,15 @@
+                <b-form-group
+                  :label="$t('validation.attributes.{{fieldName}}')"
+                  label-for="{{fieldName}}"
+                  :label-cols="3"
+                  :invalid-feedback="feedback('{{fieldName}}')"
+                >
+                  <b-form-input
+                    id="{{fieldName}}"
+                    name="{{fieldName}}"
+                    :placeholder="$t('validation.attributes.{{fieldName}}')"
+                    v-model="model.{{fieldName}}"
+                    :state="state('{{fieldName}}')"
+                  ></b-form-input>
+                </b-form-group>
+

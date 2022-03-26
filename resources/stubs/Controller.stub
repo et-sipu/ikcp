@@ -1,0 +1,109 @@
+<?php
+
+namespace App\Http\Controllers\Backend;
+
+use App\Models\{{modelName}};
+use App\Transformers\{{modelName}}Transformer;
+use Illuminate\Http\Request;
+use App\Utils\RequestSearchQuery;
+use App\Http\Requests\Store{{modelName}}Request;
+use App\Http\Requests\Update{{modelName}}Request;
+use App\Repositories\Contracts\{{modelName}}Repository;
+use Spatie\Fractal\Fractal;
+
+class {{modelName}}Controller extends BackendController
+{
+
+    /**
+     * @var {{modelName}}Repository
+     */
+    protected ${{modelNamePluralLowerCase}};
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param {{modelName}}Repository ${{modelNamePluralLowerCase}}
+     */
+    public function __construct({{modelName}}Repository ${{modelNamePluralLowerCase}})
+    {
+        $this->{{modelNamePluralLowerCase}} = ${{modelNamePluralLowerCase}};
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @param Request $request
+     *
+     * @return array
+     * @throws \Exception
+     *
+     */
+    public function search(Request $request)
+    {
+        $query = $this->{{modelNamePluralLowerCase}}->query()->with([]);
+        {{joinStatements}}
+        $requestSearchQuery = new RequestSearchQuery($request, $query,[]);
+
+        return $requestSearchQuery->result(new {{modelName}}Transformer());
+    }
+
+    /**
+     * @param {{modelName}} ${{modelNameSingularLowerCase}}
+     *
+     * @return \Spatie\Fractalistic\Fractal
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        // $this->authorize('view {{modelNamePluralLowerCaseWithSpaces}}');
+
+        return Fractal::create()->item(${{modelNameSingularLowerCase}}, new {{modelName}}Transformer());
+    }
+
+    /**
+     * @param Store{{modelName}}Request $request
+     *
+     * @return mixed
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function store(Store{{modelName}}Request $request)
+    {
+        // $this->authorize('create {{modelNamePluralLowerCaseWithSpaces}}');
+
+        $this->{{modelNamePluralLowerCase}}->store($request->all());
+
+        return $this->redirectResponse($request, __('alerts.backend.{{modelNamePluralLowerCase}}.created'));
+    }
+
+    /**
+     * @param {{modelName}} ${{modelNameSingularLowerCase}}
+     * @param Update{{modelName}}Request $request
+     *
+     * @return mixed
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function update({{modelName}} ${{modelNameSingularLowerCase}}, Update{{modelName}}Request $request)
+    {
+        // $this->authorize('edit {{modelNamePluralLowerCaseWithSpaces}}');
+
+        $this->{{modelNamePluralLowerCase}}->update(${{modelNameSingularLowerCase}}, $request->all());
+
+        return $this->redirectResponse($request, __('alerts.backend.{{modelNamePluralLowerCase}}.updated'));
+    }
+
+    /**
+     * @param {{modelName}} ${{modelNameSingularLowerCase}}
+     * @param Request $request
+     *
+     * @return mixed
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy({{modelName}} ${{modelNameSingularLowerCase}}, Request $request)
+    {
+        // $this->authorize('delete {{modelNamePluralLowerCaseWithSpaces}}');
+
+        $this->{{modelNamePluralLowerCase}}->destroy(${{modelNameSingularLowerCase}});
+
+        return $this->redirectResponse($request, __('alerts.backend.{{modelNamePluralLowerCase}}.deleted'));
+    }
+}

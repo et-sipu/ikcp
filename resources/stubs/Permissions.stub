@@ -1,0 +1,23 @@
+    'view {{modelNamePluralLowerCaseWithSpaces}}' => [
+        'display_name' => 'permissions.view.{{modelNamePluralLowerCase}}.display_name',
+        'description'  => 'permissions.view.{{modelNamePluralLowerCase}}.description',
+        'category'     => 'permissions.categories.{{modelNamePluralLowerCase}}',
+    ],
+
+    'create {{modelNamePluralLowerCaseWithSpaces}}' => [
+        'display_name' => 'permissions.create.{{modelNamePluralLowerCase}}.display_name',
+        'description'  => 'permissions.create.{{modelNamePluralLowerCase}}.description',
+        'category'     => 'permissions.categories.{{modelNamePluralLowerCase}}',
+    ],
+
+    'edit {{modelNamePluralLowerCaseWithSpaces}}' => [
+        'display_name' => 'permissions.edit.{{modelNamePluralLowerCase}}.display_name',
+        'description'  => 'permissions.edit.{{modelNamePluralLowerCase}}.description',
+        'category'     => 'permissions.categories.{{modelNamePluralLowerCase}}',
+    ],
+
+    'delete {{modelNamePluralLowerCaseWithSpaces}}' => [
+        'display_name' => 'permissions.delete.{{modelNamePluralLowerCase}}.display_name',
+        'description'  => 'permissions.delete.{{modelNamePluralLowerCase}}.description',
+        'category'     => 'permissions.categories.{{modelNamePluralLowerCase}}',
+    ],

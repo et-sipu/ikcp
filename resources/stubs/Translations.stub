@@ -1,0 +1,49 @@
+alerts.backend:
+        '{{modelNamePluralLowerCase}}' => [
+            'created' => '{{modelNameSingularLowerCaseWithSpacesFirstCapital}} created',
+            'updated' => '{{modelNameSingularLowerCaseWithSpacesFirstCapital}} updated',
+            'deleted' => '{{modelNameSingularLowerCaseWithSpacesFirstCapital}} deleted',
+        ],
+
+buttons:
+        '{{modelNamePluralLowerCase}}' => [
+            'create' => 'Create {{modelNameSingularLowerCaseWithSpaces}}',
+        ],
+
+exceptions.backend:
+        '{{modelNamePluralLowerCase}}' => [
+            'create' => 'Error on {{modelNameSingularLowerCaseWithSpaces}} creation',
+            'update' => 'Error on {{modelNameSingularLowerCaseWithSpaces}} updating',
+            'delete' => 'Error on {{modelNameSingularLowerCaseWithSpaces}} deletion',
+        ],
+
+labels.backend:
+        '{{modelNamePluralLowerCase}}' => [
+            'titles' => [
+                'main'   => '{{modelNameSingularLowerCaseWithSpacesFirstCapital}} management',
+                'index'  => '{{modelNameSingularLowerCaseWithSpacesFirstCapital}} list',
+                'create' => '{{modelNameSingularLowerCaseWithSpacesFirstCapital}} creation',
+                'edit'   => '{{modelNameSingularLowerCaseWithSpacesFirstCapital}} modification',
+            ],
+        ],
+
+permissions.view:
+        '{{modelNamePluralLowerCase}}' => [
+            'display_name' => 'View {{modelNamePluralLowerCaseWithSpaces}}',
+            'description'  => 'Can view {{modelNamePluralLowerCaseWithSpaces}}.',
+        ],
+permissions.create:
+        '{{modelNamePluralLowerCase}}' => [
+            'display_name' => 'Create {{modelNamePluralLowerCaseWithSpaces}}',
+            'description'  => 'Can create {{modelNamePluralLowerCaseWithSpaces}}.',
+        ],
+permissions.edit:
+        '{{modelNamePluralLowerCase}}' => [
+            'display_name' => 'Edit {{modelNamePluralLowerCaseWithSpaces}}',
+            'description'  => 'Can edit {{modelNamePluralLowerCaseWithSpaces}}.',
+        ],
+permissions.delete:
+        '{{modelNamePluralLowerCase}}' => [
+            'display_name' => 'Delete {{modelNamePluralLowerCaseWithSpaces}}',
+            'description'  => 'Can delete {{modelNamePluralLowerCaseWithSpaces}}.',
+        ],

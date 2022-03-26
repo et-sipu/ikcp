@@ -1,0 +1,64 @@
+    Backend (routes/admin.php):
+        Route::group(
+            ['middleware' => ['can:view {{modelNamePluralLowerCaseWithSpaces}}']],
+            function () {
+                Route::get('{{modelNamePluralLowerCase}}/search', '{{modelName}}Controller@search')->name('{{modelNamePluralLowerCase}}.search');
+                Route::get('{{modelNamePluralLowerCase}}/{{{modelNameSingularLowerCase}}}/show', '{{modelName}}Controller@show')->name('{{modelNamePluralLowerCase}}.show');
+
+                Route::resource('{{modelNamePluralLowerCase}}', '{{modelName}}Controller', [
+                    'only' => ['store', 'update', 'destroy'],
+                ]);
+            }
+        );
+
+    Frontend (resources/assets/js/backend/router/index.js):
+          {
+            path: '{{modelNamePluralLowerCase}}',
+            component: {
+              render(c) {
+                return c('router-view')
+              }
+            },
+            meta: {
+              label: i18n.t('labels.backend.{{modelNamePluralLowerCase}}.titles.main')
+            },
+            children: [
+              {
+                path: '/',
+                name: '{{modelNamePluralLowerCase}}',
+                component: () => import('../views/{{modelName}}List'),
+                meta: {
+                  label: i18n.t('labels.backend.{{modelNamePluralLowerCase}}.titles.index'),
+                  permission: 'view {{modelNamePluralLowerCaseWithSpaces}}'
+                }
+              },
+              {
+                path: 'create',
+                name: '{{modelNamePluralLowerCase}}_create',
+                component: () => import('../views/{{modelName}}Form'),
+                meta: {
+                  label: i18n.t('labels.backend.{{modelNamePluralLowerCase}}.titles.create'),
+                  permission: 'create {{modelNamePluralLowerCaseWithSpaces}}'
+                }
+              },
+              {
+                path: ':id/edit',
+                name: '{{modelNamePluralLowerCase}}_edit',
+                component: () => import('../views/{{modelName}}Form'),
+                props: true,
+                meta: {
+                  label: i18n.t('labels.backend.{{modelNamePluralLowerCase}}.titles.edit'),
+                  permission: 'edit {{modelNamePluralLowerCaseWithSpaces}}'
+                }
+              }
+            ]
+          }
+
+    Frontend Nav (resources/assets/js/backend/_nav.js):
+        {
+          name: i18n.t('labels.backend.{{modelNamePluralLowerCase}}.titles.main'),
+          url: '/{{modelNamePluralLowerCase}}',
+          icon: 'fa.{{modelName}}',
+          access: app.user.can('view {{modelNamePluralLowerCaseWithSpaces}}')
+        },
+
